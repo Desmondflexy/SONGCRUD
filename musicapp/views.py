@@ -64,6 +64,6 @@ def delete(request, id):
 def lyrics(request, id):
     lyrics = Lyric.objects.get(id=id)
     return render(request, 'musicapp/lyrics.html', {
-        'lyrics': lyrics.content,
+        'lyrics': lyrics.content.split('\n'),
         'source': lyrics.source,
     })

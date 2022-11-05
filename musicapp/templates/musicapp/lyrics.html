@@ -1,7 +1,9 @@
 {% extends "musicapp/layout.html" %}
 {% block body %}
     <h1>Song lyrics</h1>
-    <p>{{ lyrics }}</p>
+    {% for line in lyrics %}
+        <p>{{ line }}</p>
+    {% endfor %}
     <p>Source: {{ source }}</p>
     <p><a href="{% url 'musicapp:index' %}">View song list</a></p>
 {% endblock body %}
