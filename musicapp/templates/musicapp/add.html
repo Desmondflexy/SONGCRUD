@@ -1,0 +1,26 @@
+{% extends 'musicapp/layout.html' %}
+
+{% block body %}
+    <h1>Add a new song</h1>
+    <form action="{% url 'musicapp:addRecord' %}" method="post">
+        {% csrf_token %}
+        <ul>
+            <li>
+                <label for="title">Song title: <br></label>
+                <input type="text" id="title" name="title">
+            </li>
+            <li>
+                <label for="artiste">Artiste: <br></label>
+                <select name="artiste" id="artiste">
+                    {% for artiste in artistes %}
+                        <option value="{{ artiste.id }}">
+                            {{ artiste }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </li>
+            <li><button>Submit</button></li>
+        </ul>
+        
+    </form>
+{% endblock %}

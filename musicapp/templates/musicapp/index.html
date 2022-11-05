@@ -1,15 +1,14 @@
-{% load static %}
+{% extends 'musicapp/layout.html' %}
 
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <title>musicapp</title>
-    <link rel=stylesheet href={% static 'musicapp/style.css' %}>
-    <script defer src={% static 'musicapp/script.js' %}></script>
-</head>
-<body>
-    <h1>Hello Django! </h1>
-</body>
-</html>
+{% block body %}
+    <h1>Welcome to music app</h1>
+    <ol>
+        {% for x in mysongs %}
+            <li><a href="{% url 'musicapp:details' x.id %}">{{ x }}</a></li>
+        {% endfor %}
+    </ol>
+    <a href="{% url 'musicapp:add' %}">Add a new song</a>
+    
+{% endblock %}
 
 

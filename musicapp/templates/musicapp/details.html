@@ -1,0 +1,20 @@
+{% extends 'musicapp/layout.html' %}
+
+{% block body %}
+    <h1>Song details</h1>
+    <p>Title: {{ title }}</p>
+    <p>Artiste: {{ artist }}</p>
+    <p>Date released: {{ date_released }}</p>
+    <p>Likes: {{ likes }}</p>
+    <h3>Lyrics</h3>
+    <ul>
+        {% for lyrics in all_lyrics %}
+            <li><a href="{% url 'musicapp:lyrics' lyrics.id %}">{{ lyrics.source }}</a></li>
+        {% empty %}
+            <li>No lyrics found</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'musicapp:update' id %}"><button>Edit song details</button></a>
+    <a href="{% url 'musicapp:delete' id %}"><button>Delete song</button></a>
+    <p><a href="{% url 'musicapp:index' %}">View song list</a></p>
+{% endblock %}
